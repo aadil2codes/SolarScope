@@ -1,0 +1,193 @@
+:root {
+    --bg-dark: #020611;
+    --accent-blue: #7bb9fa;
+    --text-muted: #a1a1aa;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+
+    /* Premium space background */
+    background:
+        radial-gradient(circle at 50% 30%, rgba(120, 180, 255, 0.25), transparent 40%),
+        radial-gradient(circle at 80% 10%, rgba(100, 140, 255, 0.15), transparent 40%),
+        linear-gradient(180deg, #050b18 0%, #020611 60%, #00030a 100%);
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background:
+        radial-gradient(circle at 50% 40%, rgba(120, 180, 255, 0.12), transparent 45%),
+        radial-gradient(circle at 20% 20%, rgba(100, 160, 255, 0.08), transparent 40%);
+}
+
+#world {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+
+
+#world {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+/* NAVIGATION */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 25px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    box-sizing: border-box;
+}
+
+.logo { font-size: 1.2rem; letter-spacing: 3px; }
+.logo strong { color: var(--accent-blue); }
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 0.85rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.btn-enroll {
+    background: transparent;
+    border: 1px solid rgba(123, 185, 250, 0.5);
+    color: white;
+    padding: 8px 24px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+/* SECTIONS */
+section {
+    position: relative;
+    height: 100vh;
+    padding: 0 10%;
+    z-index: 10;
+}
+
+/* HERO SECTION UI */
+.section-1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    padding-top: 15vh;
+}
+
+.sub-title {
+    letter-spacing: 6px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 10px;
+}
+
+h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 5.2rem;
+    margin: 10px 0;
+    letter-spacing: 6px;
+    font-weight: 700;
+}
+
+
+.hero-content p {
+    max-width: 550px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+}
+
+.btn-get-started {
+    background: white;
+    color: black;
+    border: none;
+    padding: 12px 35px;
+    border-radius: 30px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.planet-context {
+    position: absolute;
+    bottom: 25%;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    letter-spacing: 5px;
+}
+
+.scroll-indicator {
+    border: 1px solid rgba(255,255,255,0.3);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* SECTION 2 UI */
+.section-2 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.details-content { max-width: 480px; }
+
+.action-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn-learn-more {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.play-button {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
