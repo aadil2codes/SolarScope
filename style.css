@@ -191,3 +191,64 @@ h1 {
     align-items: center;
     cursor: pointer;
 }
+
+.nav-links a {
+    position: relative;
+    transition: color 0.25s ease;
+}
+
+/* Underline */
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -6px;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+    opacity: 0;
+}
+
+.nav-links a:hover {
+    color: white;
+}
+
+.nav-links a:hover::after {
+    width: 120%;
+    opacity: 1;
+}
+
+.btn-enroll {
+    transition: all 0.3s ease;
+}
+
+.btn-enroll:hover {
+    background: rgba(123, 185, 250, 0.15);
+    box-shadow: 0 0 15px rgba(123, 185, 250, 0.4);
+    border-color: rgba(123, 185, 250, 0.9);
+}
+
+.btn-learn-more {
+    transition: all 0.3s ease;
+}
+
+.btn-learn-more:hover {
+    background: rgba(123, 185, 250, 0.12);
+    border-color: rgba(123, 185, 250, 0.9);
+    box-shadow: 0 0 18px rgba(123, 185, 250, 0.4);
+    transform: translateY(-2px);
+}
+
+.play-button {
+    transition: all 0.3s ease;
+}
+
+.play-button:hover {
+    background: rgba(123, 185, 250, 0.25);
+    box-shadow: 0 0 20px rgba(123, 185, 250, 0.6);
+    transform: scale(1.08);
+}
+
+
