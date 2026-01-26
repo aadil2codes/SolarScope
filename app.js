@@ -1,43 +1,103 @@
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+const camera = new THREE.PerspectiveCamera(
+    45,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000
+);
+
 const renderer = new THREE.WebGLRenderer({
-    canvas: document.querySelector('#world'),
+    canvas: document.querySelector("#world"),
     antialias: true,
     alpha: true
 });
 
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.physicallyCorrectLights = true;
 
-// Earth Setup
+// =========================
+// 🌍 TEXTURES
+// =========================
+const loader = new THREE.TextureLoader();
+
+const dayTexture = loader.load(
+    "https://raw.githubusercontent.com/turban/webgl-earth/master/images/2_no_clouds_4k.jpg"
+);
+
+const nightTexture = loader.load(
+    "https://raw.githubusercontent.com/turban/webgl-earth/master/images/earthlights4k.jpg"
+);
+
+const cloudsTexture = loader.load(
+    "https://raw.githubusercontent.com/turban/webgl-earth/master/images/fair_clouds_4k.png"
+);
+
+// =========================
+// 🌍 EARTH
+// =========================
 const geometry = new THREE.SphereGeometry(2, 64, 64);
-const textureLoader = new THREE.TextureLoader();
-// High-res Earth texture
-const earthTexture = textureLoader.load('https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/planets/earth_atmos_2048.jpg');
 
-const material = new THREE.MeshStandardMaterial({
-    map: earthTexture,
-    roughness: 0.9,
+const earthMaterial = new THREE.MeshStandardMaterial({
+    map: dayTexture,
+    emissiveMap: nightTexture,
+    emissive: new THREE.Color(0xffffff),
+    emissiveIntensity: 1.0,
+    roughness: 0.45,
+    metalness: 0.0
 });
 
-const earth = new THREE.Mesh(geometry, material);
+const earth = new THREE.Mesh(geometry, earthMaterial);
 scene.add(earth);
 
-// Starting State: 25% peek at bottom
-earth.scale.set(3.5, 3.5, 3.5);
-earth.position.y = -6.8; 
+// =========================
+// ☁️ CLOUDS
+// =========================
+const cloudsMaterial = new THREE.MeshStandardMaterial({
+    map: cloudsTexture,
+    transparent: true,
+    opacity: 0.7,
+    depthWrite: false
+});
 
-// Lights
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+const clouds = new THREE.Mesh(
+    new THREE.SphereGeometry(2.01, 64, 64),
+    cloudsMaterial
+);
+
+scene.add(clouds);
+
+// =========================
+// 📍 START POSITION
+// =========================
+earth.scale.set(3.5, 3.5, 3.5);
+earth.position.y = -6.8;
+
+clouds.scale.copy(earth.scale);
+clouds.position.copy(earth.position);
+
+// =========================
+// 💡 LIGHTING (NATURAL, NO HALO)
+// =========================
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.25);
 scene.add(ambientLight);
 
-const sunLight = new THREE.DirectionalLight(0xffffff, 2.5);
-sunLight.position.set(5, 3, 5);
+const sunLight = new THREE.DirectionalLight(0xffffff, 3.8);
+sunLight.position.set(8, 4, 6);
 scene.add(sunLight);
+
+// Back rim light very subtle (no halo, just shading)
+const rimLight = new THREE.DirectionalLight(0x4466aa, 0.3);
+rimLight.position.set(-8, 0, -6);
+scene.add(rimLight);
 
 camera.position.z = 10;
 
-// GSAP Animation
+// =========================
+// 📜 GSAP SCROLL ANIMATION
+// =========================
 gsap.registerPlugin(ScrollTrigger);
 
 const tl = gsap.timeline({
@@ -49,28 +109,52 @@ const tl = gsap.timeline({
     }
 });
 
-tl.to(earth.position, {
+tl.to([earth.position, clouds.position], {
     y: 0,
     x: 4.8,
     ease: "power2.inOut"
 })
-.to(earth.scale, {
+.to([earth.scale, clouds.scale], {
     x: 1.1,
     y: 1.1,
     z: 1.1,
     ease: "power2.inOut"
 }, 0);
 
+// =========================
+// 🎞️ ANIMATION LOOP
+// =========================
 function animate() {
     requestAnimationFrame(animate);
-    earth.rotation.y += 0.001; 
+
+    earth.rotation.y += 0.0008;
+    clouds.rotation.y += 0.0012;
+
     renderer.render(scene, camera);
 }
 
-window.addEventListener('resize', () => {
+// =========================
+// 🔄 RESIZE
+// =========================
+window.addEventListener("resize", () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
 animate();
+
+// =========================
+// 🫥 Fade out hero text on scroll
+// =========================
+gsap.to(".hero-content", {
+    scrollTrigger: {
+        trigger: ".section-1",
+        start: "top top",
+        end: "bottom top",
+        scrub: true
+    },
+    opacity: 0,
+    y: -80,
+    ease: "power2.out"
+});
