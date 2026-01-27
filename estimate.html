@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Solar Estimation</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.css" />
+
+  <link rel="stylesheet" href="show.css" />
+</head>
+<body>
+  <div class="logo"><a href="index.html">solar<strong>scope</strong></a></div>
+
+<div class="container">
+  <div id="map"></div>
+
+  <div class="details">
+    <hr />
+
+<h3>Manual Input (Optional)</h3>
+
+<label>Area (m²)</label>
+<input type="number" id="manualArea" placeholder="e.g. 50" />
+
+<label>Location (City or Lat,Lng)</label>
+<input type="text" id="manualLocation" placeholder="e.g. Kolkata or 22.57,88.36" />
+
+<button id="manualCalcBtn">Calculate Using Input</button>
+
+<hr />
+
+    <h2>Solar Estimation</h2>
+
+    <div class="toggle-box">
+      <label>
+        <input type="checkbox" id="modelToggle">
+        Advanced Physics Model. (Advanced mode applies thermal, tilt & derating physics.)
+      </label>
+    </div>
+
+    <p><b>Selected Area</b></p>
+    <h1><span id="area">0</span> m²</h1>
+
+    <p><b>Panels Installable</b></p>
+    <h2><span id="panels">0</span></h2>
+
+    <p><b>Installed Capacity</b></p>
+    <h2><span id="capacity">0</span> kW</h2>
+
+    <hr />
+
+    <p><b>Energy Generation</b></p>
+    <p>Daily: <b><span id="daily">—</span> kWh</b></p>
+    <p>Monthly: <b><span id="monthly">—</span> kWh</b></p>
+    <p>Yearly: <b><span id="yearly">—</span> kWh</b></p>
+
+    <p class="note">
+      Uses live cloud cover, rain & temperature from OpenWeather.
+    </p>
+    <hr />
+
+   <p><b>Environmental Impact 🌱</b></p>
+   <p>CO₂ Reduced (Monthly): <b><span id="co2Monthly">—</span> kg</b></p>
+   <p>CO₂ Reduced (Yearly): <b><span id="co2Yearly">—</span> kg</b></p>
+
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.js"></script>
+<script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
+
+<script src="work.js"></script>
+</body>
+</html>
