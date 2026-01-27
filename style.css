@@ -12,7 +12,7 @@ body, html {
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
 
-    /* Premium space background */
+    
     background:
         radial-gradient(circle at 50% 30%, rgba(120, 180, 255, 0.25), transparent 40%),
         radial-gradient(circle at 80% 10%, rgba(100, 140, 255, 0.15), transparent 40%),
@@ -46,7 +46,7 @@ body::before {
     z-index: 0;
 }
 
-/* NAVIGATION */
+
 nav {
     position: fixed;
     top: 0;
@@ -81,7 +81,7 @@ nav {
     font-size: 0.85rem;
 }
 
-/* SECTIONS */
+
 section {
     position: relative;
     height: 100vh;
@@ -89,7 +89,6 @@ section {
     z-index: 10;
 }
 
-/* HERO SECTION UI */
 .section-1 {
     display: flex;
     flex-direction: column;
@@ -156,7 +155,6 @@ h1 {
     align-items: center;
 }
 
-/* SECTION 2 UI */
 .section-2 {
     display: flex;
     align-items: center;
@@ -197,7 +195,6 @@ h1 {
     transition: color 0.25s ease;
 }
 
-/* Underline */
 .nav-links a::after {
     content: "";
     position: absolute;
