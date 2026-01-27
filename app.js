@@ -18,9 +18,7 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.physicallyCorrectLights = true;
 
-// =========================
-// 🌍 TEXTURES
-// =========================
+
 const loader = new THREE.TextureLoader();
 
 const dayTexture = loader.load(
@@ -35,9 +33,6 @@ const cloudsTexture = loader.load(
     "https://raw.githubusercontent.com/turban/webgl-earth/master/images/fair_clouds_4k.png"
 );
 
-// =========================
-// 🌍 EARTH
-// =========================
 const geometry = new THREE.SphereGeometry(2, 64, 64);
 
 const earthMaterial = new THREE.MeshStandardMaterial({
@@ -52,9 +47,6 @@ const earthMaterial = new THREE.MeshStandardMaterial({
 const earth = new THREE.Mesh(geometry, earthMaterial);
 scene.add(earth);
 
-// =========================
-// ☁️ CLOUDS
-// =========================
 const cloudsMaterial = new THREE.MeshStandardMaterial({
     map: cloudsTexture,
     transparent: true,
@@ -69,18 +61,14 @@ const clouds = new THREE.Mesh(
 
 scene.add(clouds);
 
-// =========================
-// 📍 START POSITION
-// =========================
+
 earth.scale.set(3.5, 3.5, 3.5);
 earth.position.y = -6.8;
 
 clouds.scale.copy(earth.scale);
 clouds.position.copy(earth.position);
 
-// =========================
-// 💡 LIGHTING (NATURAL, NO HALO)
-// =========================
+
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.25);
 scene.add(ambientLight);
 
@@ -88,16 +76,13 @@ const sunLight = new THREE.DirectionalLight(0xffffff, 3.8);
 sunLight.position.set(8, 4, 6);
 scene.add(sunLight);
 
-// Back rim light very subtle (no halo, just shading)
 const rimLight = new THREE.DirectionalLight(0x4466aa, 0.3);
 rimLight.position.set(-8, 0, -6);
 scene.add(rimLight);
 
 camera.position.z = 10;
 
-// =========================
-// 📜 GSAP SCROLL ANIMATION
-// =========================
+
 gsap.registerPlugin(ScrollTrigger);
 
 const tl = gsap.timeline({
@@ -121,9 +106,6 @@ tl.to([earth.position, clouds.position], {
     ease: "power2.inOut"
 }, 0);
 
-// =========================
-// 🎞️ ANIMATION LOOP
-// =========================
 function animate() {
     requestAnimationFrame(animate);
 
@@ -133,9 +115,6 @@ function animate() {
     renderer.render(scene, camera);
 }
 
-// =========================
-// 🔄 RESIZE
-// =========================
 window.addEventListener("resize", () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
@@ -144,9 +123,6 @@ window.addEventListener("resize", () => {
 
 animate();
 
-// =========================
-// 🫥 Fade out hero text on scroll
-// =========================
 gsap.to(".hero-content", {
     scrollTrigger: {
         trigger: ".section-1",
