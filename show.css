@@ -1,0 +1,67 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.logo { font-size: 1.2rem; letter-spacing: 3px; }
+.logo strong { color: var(--accent-blue); }
+
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+#map {
+  width: 50%;
+  height: 100%;
+}
+
+.details {
+  width: 50%;
+  padding: 30px;
+  background: #f7f7f7;
+  box-sizing: border-box;
+}
+
+.details h1 {
+  font-size: 42px;
+  color: #2c7be5;
+}
+
+.details h2 {
+  color: #1b5e20;
+}
+
+.toggle-box {
+  margin: 15px 0;
+  font-size: 16px;
+}
+
+.toggle-box input {
+  transform: scale(1.2);
+  margin-right: 8px;
+}
+
+.note {
+  font-size: 13px;
+  color: #555;
+}
+
+input, button {
+  width: 100%;
+  padding: 8px;
+  margin: 6px 0 12px 0;
+  font-size: 14px;
+}
+
+button {
+  background: #2c7be5;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1a5dcc;
+}
