@@ -1,67 +1,314 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
+/* ================= ROOT & BASE ================= */
+
+:root {
+  --accent-blue: #4382c1;
+  --bg-dark: #020611;
+  --text-muted: #9aa4c7;
 }
 
-.logo { font-size: 1.2rem; letter-spacing: 3px; }
-.logo strong { color: var(--accent-blue); }
-
-
-.container {
-  display: flex;
-  height: 100vh;
-}
-
-#map {
-  width: 50%;
-  height: 100%;
-}
-
-.details {
-  width: 50%;
-  padding: 30px;
-  background: #f7f7f7;
+* {
   box-sizing: border-box;
 }
 
-.details h1 {
-  font-size: 42px;
-  color: #2c7be5;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg-dark);
+  color: white;
+  overflow-x: hidden;
 }
 
-.details h2 {
-  color: #1b5e20;
+/* ================= NAVBAR ================= */
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 72px;
+  padding: 18px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2000;
+  background: var(--bg-dark);
+  border-bottom: 1px solid #1a1f2e;
 }
 
-.toggle-box {
-  margin: 15px 0;
-  font-size: 16px;
+.logo {
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  font-weight: 600;
 }
 
-.toggle-box input {
-  transform: scale(1.2);
-  margin-right: 8px;
+.logo strong {
+  color: var(--accent-blue);
 }
 
-.note {
-  font-size: 13px;
-  color: #555;
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  margin: 0 20px;
+  font-size: 0.85rem;
+  position: relative;
 }
 
-input, button {
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+  transform: translateX(-50%);
+  transition: 0.3s;
+  opacity: 0;
+}
+
+.nav-links a:hover::after {
+  width: 120%;
+  opacity: 1;
+}
+
+/* ================= CONTAINER ================= */
+
+.container {
+  margin-top: 72px;
+}
+
+/* ================= SECTIONS ================= */
+
+.section {
+  background: var(--bg-dark);
+  position: relative;
+}
+
+/* ================= MAP SECTION ================= */
+
+.section-map {
+  position: relative;
+  z-index: 5;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Map controls */
+
+.map-controls {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 1500;
+  background: white;
+  padding: 8px;
+  border-radius: 8px;
+  width: 240px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+}
+
+.map-controls input {
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 6px;
+}
+
+.btn-map-primary,
+.btn-map-secondary {
   width: 100%;
   padding: 8px;
-  margin: 6px 0 12px 0;
-  font-size: 14px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 6px;
 }
 
-button {
+.btn-map-primary { background: #2c7be5; }
+.btn-map-secondary { background: #1b5e20; }
+
+/* ================= INPUT + ESTIMATION ================= */
+
+.section-input {
+  padding: 30px;
+}
+
+.section-input input {
+  width: 100%;
+  padding: 8px;
+  margin: 6px 0 12px;
+}
+
+.btn-form {
+  width: 100%;
+  padding: 10px;
   background: #2c7be5;
-  color: white;
   border: none;
+  color: white;
   cursor: pointer;
 }
 
-button:hover {
-  background: #1a5dcc;
+/* ================= ENERGY + ENVIRONMENT ================= */
+
+.section-energy {
+  padding: 30px 60px;
+}
+
+.section-energy h3 {
+  color: #2c7be5;
+}
+
+.section-energy p {
+  font-size: 18px;
+  margin: 6px 0;
+}
+
+.note {
+  font-size: 14px;
+  color: #777;
+}
+
+/* ================= TOGGLE ================= */
+
+.toggle-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.switch {
+  position: relative;
+  width: 46px;
+  height: 24px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  background: #2b2f42;
+  border-radius: 30px;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: white;
+  border-radius: 50%;
+  top: 3px;
+  left: 3px;
+  transition: transform 0.3s ease;
+}
+
+.switch input:checked + .slider {
+  background: var(--accent-blue);
+}
+
+.switch input:checked + .slider::before {
+  transform: translateX(22px);
+}
+
+/* ================= DESKTOP LAYOUT ================= */
+
+@media (min-width: 769px) {
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .section-map {
+    grid-column: 1;
+    height: calc(100vh - 72px);
+  }
+
+  .section-input {
+    grid-column: 2;
+    min-height: calc(100vh - 72px);
+  }
+
+  .section-energy {
+    grid-column: 1 / span 2;
+  }
+
+  /* Desktop scroll hint (end of section 2) */
+  .section-input::after {
+    content: "↓ Scroll to see Energy Generation & Environmental Impact";
+    display: block;
+    margin-top: 30px;
+    padding-top: 18px;
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: 0.6px;
+    color: var(--text-muted);
+    border-top: 1px dashed rgba(255,255,255,0.2);
+    animation: desktopHintFade 2.2s ease-in-out infinite;
+  }
+}
+
+/* ================= MOBILE LAYOUT ================= */
+
+@media (max-width: 768px) {
+
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Map = 2/3 screen */
+  .section-map {
+    height: 66.666vh;
+  }
+
+  #map {
+    height: 100%;
+    width: 100vw;
+  }
+
+  .section-input,
+  .section-energy {
+    padding: 24px 20px;
+  }
+
+  /* Mobile scroll hint on map */
+  #map::after {
+    content: "Scroll ↓ for Estimation";
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px 14px;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    color: white;
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(6px);
+    border-radius: 20px;
+    z-index: 9999;
+    pointer-events: none;
+    animation: floatHint 1.6s ease-in-out infinite;
+  }
+}
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes floatHint {
+  0%   { transform: translate(-50%, 0); opacity: 0.6; }
+  50%  { transform: translate(-50%, 6px); opacity: 1; }
+  100% { transform: translate(-50%, 0); opacity: 0.6; }
+}
+
+@keyframes desktopHintFade {
+  0%   { opacity: 0.4; }
+  50%  { opacity: 1; }
+  100% { opacity: 0.4; }
 }
