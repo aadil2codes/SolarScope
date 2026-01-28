@@ -96,7 +96,7 @@ const tl = gsap.timeline({
 
 tl.to([earth.position, clouds.position], {
     y: 0,
-    x: 4.8,
+    x: 3.3,
     ease: "power2.inOut"
 })
 .to([earth.scale, clouds.scale], {
@@ -134,3 +134,4 @@ gsap.to(".hero-content", {
     y: -80,
     ease: "power2.out"
 });
+
