@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Impact | SolarScope</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --accent-blue: #7bb9fa;
+            --text-muted: #a1a1aa;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            color: white;
+            background:
+                radial-gradient(circle at 50% 30%, rgba(120, 180, 255, 0.25), transparent 40%),
+                linear-gradient(180deg, #050b18 0%, #020611 60%, #00030a 100%);
+        }
+
+        /* Navbar */
+        nav {
+            position: sticky;
+            top: 0;
+            padding: 25px 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            background: rgba(2,6,17,0.6);
+            z-index: 100;
+        }
+
+        .logo { font-size: 1.2rem; letter-spacing: 3px; }
+        .logo strong { color: var(--accent-blue); }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 80px;
+        }
+
+        /* Impact cards */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+        }
+
+        .impact-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(123,185,250,0.2);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .impact-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 0 30px rgba(123,185,250,0.25);
+            border-color: rgba(123,185,250,0.6);
+        }
+
+        .impact-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .impact-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .impact-desc {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+        }
+
+        /* Big numbers */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        .stat-box {
+            padding: 30px;
+            border-radius: 20px;
+            background: rgba(123,185,250,0.08);
+            border: 1px solid rgba(123,185,250,0.25);
+        }
+
+        .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            color: var(--accent-blue);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* CTA */
+        .cta {
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffd36a, #7bb9fa);
+            color: black;
+            padding: 14px 36px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 0 25px rgba(255,211,106,0.5);
+            transition: 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 0 40px rgba(255,211,106,0.8);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">solar<strong>scope</strong></div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <!-- <a href="how-it-works.html">How It Works</a> -->
+            <!-- <a href="impact.html">Impact</a> -->
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Why SolarScope Matters</h1>
+        <p class="subtitle">
+            Our goal is not just calculation — it’s accelerating the transition to clean energy.
+        </p>
+
+        <div class="impact-grid">
+
+            <div class="impact-card">
+                <div class="impact-icon">🌍</div>
+                <div class="impact-title">Reduce Carbon Emissions</div>
+                <div class="impact-desc">
+                    Every solar installation reduces dependence on fossil fuels and directly cuts CO₂ emissions.
+                </div>
+            </div>
+
+            <div class="impact-card">
+                <div class="impact-icon">⚡</div>
+                <div class="impact-title">Clean Energy Adoption</div>
+                <div class="impact-desc">
+                    By making solar planning simple, we remove friction and help more people switch to clean energy.
+                </div>
+            </div>
+
+            <div class="impact-card">
+                <div class="impact-icon">💰</div>
+                <div class="impact-title">Lower Electricity Bills</div>
+                <div class="impact-desc">
+                    Solar helps households and businesses save money while producing their own power.
+                </div>
+            </div>
+
+            <div class="impact-card">
+                <div class="impact-icon">🏭</div>
+                <div class="impact-title">Energy Independence</div>
+                <div class="impact-desc">
+                    Local solar generation reduces stress on the grid and increases energy security.
+                </div>
+            </div>
+
+        </div>
+
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-number">~ One ton</div>
+                <div class="stat-label">CO₂ saved per home per year</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">Twenty plus years</div>
+                <div class="stat-label">Average panel lifetime</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">Zero</div>
+                <div class="stat-label">Emissions during generation</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">Millions</div>
+                <div class="stat-label">Homes can benefit</div>
+            </div>
+        </div>
+
+        <div class="cta">
+            <a href="index.html" class="btn">Start Estimating</a>
+        </div>
+
+    </div>
+
+</body>
+</html>
