@@ -149,6 +149,5 @@ Copy code
 cd SolarScope
 Run
 
-Just open index.html in your browser.
 
 
