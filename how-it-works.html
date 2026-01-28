@@ -130,6 +130,32 @@
             transform: translateY(-2px) scale(1.04);
             box-shadow: 0 0 40px rgba(255,211,106,0.8);
         }
+
+        .nav-links a {
+        color: white;
+        text-decoration: none;
+        margin: 0 20px;
+        font-size: 0.85rem;
+        position: relative;
+        }
+
+        .nav-links a::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -6px;
+        width: 0%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+        transform: translateX(-50%);
+        transition: 0.3s;
+        opacity: 0;
+        }
+
+        .nav-links a:hover::after {
+        width: 120%;
+        opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -138,7 +164,8 @@
         <div class="logo">solar<strong>scope</strong></div>
         <div class="nav-links">
             <a href="index.html">Home</a>
-            <!-- <a href="how-it-works.html">How It Works</a> -->
+            <a href="estimate.html">Estimate</a>
+            <a href="impact.html">Impact</a>
         </div>
     </nav>
 
@@ -184,8 +211,10 @@
 
         </div>
 
+
+
         <div class="cta">
-            <a href="index.html" class="btn">Try It Now</a>
+            <a href="estimate.html" class="btn">Try It Now</a>
         </div>
     </div>
 
