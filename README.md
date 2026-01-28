@@ -90,7 +90,6 @@ Estimated Output = Capacity × Sun Hours × System Efficiency
   - Location-based solar data
   - Cost estimation
   - CO₂ savings
-  - Battery storage simulation
 
 ---
 
@@ -154,7 +153,7 @@ Just open index.html in your browser.
 
 ---
 
-Notes-
+## Notes-
 This is currently a frontend-only project.
 
 Future improvements may include:
