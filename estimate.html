@@ -11,62 +11,89 @@
   <link rel="stylesheet" href="show.css" />
 </head>
 <body>
-  <div class="logo"><a href="index.html">solar<strong>scope</strong></a></div>
+  <nav>
+        <div class="logo">solar<strong>scope</strong></div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="how-it-works.html">Working</a>
+            <a href="impact.html">Impact</a>
+        </div>
+    </nav>
 
 <div class="container">
-  <div id="map"></div>
 
-  <div class="details">
+  <section class="section section-map">
+    <div id="map">
+      <div class="map-controls">
+        <input type="text" id="searchLocation" placeholder="Search place" />
+        <button class="btn-map-primary" id="searchBtn">Search</button>
+        <button class="btn-map-secondary" id="useLocationBtn">📍 Use Current Location</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-input">
+
+    <h3>Manual Input (Optional)</h3>
+
+    <label>Area (m²)</label>
+    <input type="number" id="manualArea" placeholder="e.g. 50" />
+
+    <label>Location (City or Lat,Lng)</label>
+    <input type="text" id="manualLocation" placeholder="e.g. Kolkata or 22.57,88.36" />
+
+    <button class="btn-form" id="manualCalcBtn">
+      Calculate Solar Estimation
+    </button>
+
     <hr />
-
-<h3>Manual Input (Optional)</h3>
-
-<label>Area (m²)</label>
-<input type="number" id="manualArea" placeholder="e.g. 50" />
-
-<label>Location (City or Lat,Lng)</label>
-<input type="text" id="manualLocation" placeholder="e.g. Kolkata or 22.57,88.36" />
-
-<button id="manualCalcBtn">Calculate Using Input</button>
-
-<hr />
 
     <h2>Solar Estimation</h2>
 
-    <div class="toggle-box">
-      <label>
-        <input type="checkbox" id="modelToggle">
-        Advanced Physics Model. (Advanced mode applies thermal, tilt & derating physics.)
-      </label>
-    </div>
-
-    <p><b>Selected Area</b></p>
+    <p><b>Selected Area:</b></p>
     <h1><span id="area">0</span> m²</h1>
 
-    <p><b>Panels Installable</b></p>
+    <p><b>Panels Installable:</b></p>
     <h2><span id="panels">0</span></h2>
 
-    <p><b>Installed Capacity</b></p>
+    <p><b>Installed Capacity:</b></p>
     <h2><span id="capacity">0</span> kW</h2>
 
-    <hr />
+  </section>
 
-    <p><b>Energy Generation</b></p>
+  <section class="section section-energy">
+
+    <div class="toggle-box">
+      <label class="switch">
+        <input type="checkbox" id="modelToggle">
+        <span class="slider"></span>
+      </label>
+      <span class="toggle-text">
+        Advanced Physics Model (uses tilt and diffuse irradiance)
+      </span>
+    </div>
+
+    <h3>Energy Generation</h3>
     <p>Daily: <b><span id="daily">—</span> kWh</b></p>
     <p>Monthly: <b><span id="monthly">—</span> kWh</b></p>
     <p>Yearly: <b><span id="yearly">—</span> kWh</b></p>
 
-    <p class="note">
-      Uses live cloud cover, rain & temperature from OpenWeather.
-    </p>
+    <p class="note">Uses live cloud cover, rain & temperature from OpenWeather.</p>
+
     <hr />
 
-   <p><b>Environmental Impact 🌱</b></p>
-   <p>CO₂ Reduced (Monthly): <b><span id="co2Monthly">—</span> kg</b></p>
-   <p>CO₂ Reduced (Yearly): <b><span id="co2Yearly">—</span> kg</b></p>
+    <h3>Environmental Impact</h3>
+    <p>CO₂ Reduced (Daily): <b><span id="co2Daily">—</span> kg</b></p>
+    <p>CO₂ Reduced (Monthly): <b><span id="co2Monthly">—</span> kg</b></p>
+    <p>CO₂ Reduced (Yearly): <b><span id="co2Yearly">—</span> kg</b></p>
 
-  </div>
+  </section>
+
 </div>
+
+
+
+
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.js"></script>
