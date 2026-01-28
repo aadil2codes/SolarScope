@@ -151,18 +151,4 @@ Run
 
 Just open index.html in your browser.
 
----
-
-## Notes-
-This is currently a frontend-only project.
-
-Future improvements may include:
-
-Location-based solar data
-
-Cost & ROI calculator
-
-Emission reduction stats
-
-Charts and visual reports
 
