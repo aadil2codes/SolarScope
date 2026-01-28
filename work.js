@@ -200,12 +200,16 @@ document
 
 function calculateCO2Reduction(dailyEnergy) {
   if (!dailyEnergy || dailyEnergy <= 0) return;
-
+  
   const monthlyEnergy = dailyEnergy * 30;
   const yearlyEnergy = dailyEnergy * 365;
 
+  const co2Daily = dailyEnergy * GRID_CO2_FACTOR;
   const co2Monthly = monthlyEnergy * GRID_CO2_FACTOR;
   const co2Yearly = yearlyEnergy * GRID_CO2_FACTOR;
+
+  document.getElementById("co2Daily").innerText =
+    co2Daily.toFixed(1);
 
   document.getElementById("co2Monthly").innerText =
     co2Monthly.toFixed(1);
@@ -213,3 +217,42 @@ function calculateCO2Reduction(dailyEnergy) {
   document.getElementById("co2Yearly").innerText =
     co2Yearly.toFixed(1);
 }
+
+
+document.getElementById("searchBtn").addEventListener("click", async () => {
+  const query = document.getElementById("searchLocation").value;
+  if (!query) return alert("Enter a location to search");
+
+  try {
+    const { lat, lon } = await geocodeLocation(query);
+    map.setView([lat, lon], 17);
+  } catch (err) {
+    alert("Location not found");
+  }
+});
+
+
+document.getElementById("useLocationBtn").addEventListener("click", () => {
+  if (!navigator.geolocation) {
+    alert("Geolocation not supported by your browser");
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+
+      map.setView([lat, lon], 18);
+
+      // Optional: show marker
+      L.marker([lat, lon])
+        .addTo(map)
+        .bindPopup("You are here")
+        .openPopup();
+    },
+    () => {
+      alert("Unable to fetch your location");
+    }
+  );
+});
