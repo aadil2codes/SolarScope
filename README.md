@@ -16,19 +16,6 @@ SolarScope is a responsive web application built with HTML, CSS, and JavaScript 
 
 ---
 
-## 📁 Project Structure
-
-SolarScope/
-├── index.html # Landing page
-├── estimate.html # Estimation interface
-├── app.js # Main logic & calculations
-├── work.js # UI interaction logic
-├── style.css # Main styling
-├── show.css # Result display styling
-└── README.md # Project documentation
-
----
-
 ## 🛠️ Technologies Used
 
 - HTML5
