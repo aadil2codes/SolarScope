@@ -25,7 +25,7 @@ SolarScope/
 ├── work.js # UI interaction logic
 ├── style.css # Main styling
 ├── show.css # Result display styling
-├── README.md # Project documentation
+└── README.md # Project documentation
 
 ---
 
@@ -151,6 +151,8 @@ cd SolarScope
 Run
 
 Just open index.html in your browser.
+
+---
 
 Notes-
 This is currently a frontend-only project.
